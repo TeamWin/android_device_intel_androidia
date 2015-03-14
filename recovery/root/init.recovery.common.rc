@@ -1,0 +1,20 @@
+# Common init.rc directives that apply for *ALL* Intel projects
+# inside the Recovery Console environment.
+# Be very careful what you put in here; it may more
+# properly belong in a platform or product-specifc
+# init.rc, or a mix-in
+#
+# ALL additional directives to this file MUST have a detailed comment
+# explaining why it is necessary
+
+on init
+	# Android creates by-name disk links with the disk controller
+	# in the generated path, so that the names pulled out of the GPT
+	# can be associated with the correct disk. Create a shortcut to
+	# /dev/block/by-name so that we can use the same fstabs everywhere.
+	symlink /dev/block/platform/${ro.boot.disk}/by-name /dev/block/by-name
+
+	# Associate the specific device node use for the SD card with
+	# the stable symlink 'sdcard'. If this isn't set nothing happens.
+	symlink /dev/block/${ro.boot.sdcard} /dev/block/sdcard
+

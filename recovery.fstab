@@ -1,0 +1,7 @@
+# mount point	fstype		device
+
+/system       ext4      /dev/block/sdb7
+/data         ext4      /dev/block/sdb9     length=-16384
+/cache        ext4      /dev/block/sdb8
+/boot         emmc      /dev/block/sdb3
+/recovery     emmc      /dev/block/sdb4
